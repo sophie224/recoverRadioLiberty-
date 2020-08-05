@@ -2,7 +2,10 @@ $(document).ready(function() {
 	for(var j=0;j<drawInfo.length;j++){
      addImageInContainer(j);
 	}
-	$('.humans_story').hide();
+  $('.humans_story').hide();
+  setTimeout(() => {
+    $(".loader-holder").css("display","none");          
+  }, 2000);
 });
 
 
@@ -12,6 +15,7 @@ $(function() {
     $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
   });
 });
+
 
 let drawInfo = [
     {
@@ -164,29 +168,9 @@ let drawInfo = [
 
 
 let addImageInContainer = function(j) {
-
-  // let columnDiv=document.createElement("div");
-  // $(columnDiv).addClass("column");
-
   $(".masonry").append(columnMarkup(j));
-
-  // $('.row').append(columnDiv);
-  
- 
 }
 
-// function columnMarkup(i){
-//     if(drawInfo[i]){
-//       let drawRows =` 
-//        	<div class="each_person_card">
-//        		<img src="${drawInfo[i].src}" style="width:100%" class="modalImg" id=${i}>
-//           <p class="each_person_title">${drawInfo[i].title}</p>
-//           <p class="each_person_description"> ${drawInfo[i].text}</p>
-//        	</div>  
-//       `
-//       return drawRows;
-//     }
-// }	
 
 function columnMarkup(i){
   if(drawInfo[i]){
@@ -200,10 +184,19 @@ function columnMarkup(i){
     return drawRows;
   }
 }	
+
 $('.scroll_down').click(function(){ 
     $(this).hide();
     $('.humans_story').show(); 
     $('footer').css('display','flex');
+}); 
+
+
+
+$('.logo a').click(function(){ 
+  $('.scroll_down').show();
+  $('.humans_story ').hide();
+  $('footer').hide();
 }); 
 
 /*modalbox*/
@@ -215,11 +208,13 @@ let span = document.getElementsByClassName("close")[0];
 
 span.onclick = function() {
   modal.style.display = "none";
+  stopVideo();
 }
 
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    stopVideo();
   }
 }
 
@@ -245,3 +240,20 @@ $(document).on('click', '.modalImg', function() {
   clickForVideo();
 });
 
+$(window).scroll(function(){ 
+  if ($(this).scrollTop() > 200) { 
+    $('#scroll').fadeIn(); 
+  } else { 
+    $('#scroll').fadeOut(); 
+  } 
+}); 
+
+$('#scroll').click(function(){ 
+  $("html, body").animate({ scrollTop: 0 }, 600); 
+  return false; 
+}); 
+
+function stopVideo() {
+  var currentIframe = document.querySelector('.modal-content > iframe');
+  currentIframe.src = currentIframe.src;
+}
