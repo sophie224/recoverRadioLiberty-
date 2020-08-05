@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'BPG Nino Mtavruli';
+    src: url('BPGNinoMtavruli.woff2') format('woff2'),
+        url('BPGNinoMtavruli.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
