@@ -204,10 +204,8 @@ $('.logo a').click(function(){
 
 /*modalbox*/
 let modal = document.getElementById("myModal");
-
 let imgBtn = document.getElementsByClassName("modalImg");
 let span = document.getElementsByClassName("close")[0];
-
 
 span.onclick = function() {
   modal.style.display = "none";
@@ -219,14 +217,20 @@ window.onclick = function(event) {
     modal.style.display = "none";
     stopVideo();
   }
+  
 }
 
+function stopVideo() {
+  var currentIframe = document.querySelector('.iframe-div > iframe');
+  
+  currentIframe.src = currentIframe.src;
+  console.log("currentIframe",currentIframe.src)
+}
 
 function clickForVideo(){
   $(imgBtn).click(function() {
     modal.style.display = "block";
     let getImgId = $(this).attr('id');
-    console.log("getImgId",getImgId);
     setVideoInModal(getImgId);
   });
 }
@@ -256,8 +260,3 @@ $('#scroll').click(function(){
   $("html, body").animate({ scrollTop: 0 }, 600); 
   return false; 
 }); 
-
-function stopVideo() {
-  var currentIframe = document.querySelector('.modal-content > iframe');
-  currentIframe.src = currentIframe.src;
-}
