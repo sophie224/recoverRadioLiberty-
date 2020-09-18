@@ -831,8 +831,21 @@ body,html{
   .masonry {
     column-count: 4;
   }
+  
  }
  
+
+ @media only screen and (max-width: 1024px) {
+  .modal-content{
+    width: 80%;
+  }
+  .modal-body, iframe{
+    height: 47vh !important;
+ 
+  }
+
+ }
+
  @media only screen and (max-width: 767px) {
   .lab-grid {
     margin-left: -1.5em;
@@ -899,8 +912,10 @@ body,html{
     padding: 16px 15px 14px 16px;
    }
    .modal-body, iframe{
-    height: 35vh !important;
- 
+    height: 56vh !important;
+  }
+  .modal-content{
+    width: 80%;
   }
  }
  @media only screen and (max-width: 460px) {
@@ -929,9 +944,10 @@ body,html{
       padding: 16px 15px 14px 16px ;
     }
     .modal-body, iframe{
-      height: 20vh !important;
+      height: 25vh !important;
    
     }
+    
  }
 
  
@@ -971,10 +987,7 @@ body,html{
      width: 25%;
    }
    
-   .modal-body, iframe{
-    height: 45vh !important;
- 
-  }
+   
  }
 
 
