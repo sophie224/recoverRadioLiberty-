@@ -64,7 +64,7 @@ body,html{
 	align-items: center;
 }
 .main-video{
-  width: 100%;
+  width: 80%;
 }
 #videoBG {
   /*-webkit-filter: opacity(.2);*/

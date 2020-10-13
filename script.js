@@ -179,7 +179,7 @@ function columnMarkup(i){
   if(drawInfo[i]){
     let drawRows =` 
       <div class="brick ">
-        <img src="${drawInfo[i].src}" class="modalImg" id=${i}>
+        <img src="${drawInfo[i].src}" class="modalImg video-fullscreen" id=${i}>
         <p class="each_person_title">${drawInfo[i].title}</p>
         <p class="each_person_description"> ${drawInfo[i].text}</p>
       </div>
@@ -245,7 +245,21 @@ function setVideoInModal(imgId){
 }
 
 $(document).on('click', '.modalImg', function() {
+  var marioVideo = document.getElementById("mario-video")
+
   clickForVideo();
+  if (marioVideo.requestFullscreen) {
+    marioVideo.requestFullscreen();
+  }
+  else if (marioVideo.msRequestFullscreen) {
+      marioVideo.msRequestFullscreen();
+  }
+  else if (marioVideo.mozRequestFullScreen) {
+      marioVideo.mozRequestFullScreen();
+  }
+  else if (marioVideo.webkitRequestFullScreen) {
+      marioVideo.webkitRequestFullScreen();
+  }
 });
 
 $(window).scroll(function(){ 
@@ -260,3 +274,30 @@ $('#scroll').click(function(){
   $("html, body").animate({ scrollTop: 0 }, 600); 
   return false; 
 }); 
+
+// (function () {
+// console.log(1)
+//       videoFullscreen = document.getElementById("video-fullscreen");//change with your btn ID
+
+//   if (marioVideo && videoFullscreen) {
+//       videoFullscreen.addEventListener("click", function (evt) {
+//           if (marioVideo.requestFullscreen) {
+//               marioVideo.requestFullscreen();
+//           }
+//           else if (marioVideo.msRequestFullscreen) {
+//               marioVideo.msRequestFullscreen();
+//           }
+//           else if (marioVideo.mozRequestFullScreen) {
+//               marioVideo.mozRequestFullScreen();
+//           }
+//           else if (marioVideo.webkitRequestFullScreen) {
+//               marioVideo.webkitRequestFullScreen();
+//               /*
+//                   *Kept here for reference: keyboard support in full screen
+//                   * marioVideo.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+//               */
+//           }
+//       }, false);
+//   }
+// })();
+
